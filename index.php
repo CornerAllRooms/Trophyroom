@@ -1,6 +1,18 @@
+<?php
+        session_start();
+        if (isset($_SESSION['user'])) {
+            header('Location: homepage.php');
+            exit;
+        }
+    
+        if (isset($_GET['error'])) {
+            echo '<div class="error-message">' . htmlspecialchars($_GET['error']) . '</div>';
+        }
+        ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="icon" href="logo.png" type="image/x-icon">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fitness Scroller</title>
@@ -10,9 +22,9 @@
   <!-- Login System -->
   <div id="login-screen">
     <h1>Welcome to Fitness Scroller</h1>
-    <form id="login-form">
+    <form id="login-form"  action="register.php">
         <h2>stay motivated by uploading your progress every week </h2>
-      <input type="text" id="username" placeholder="Username" required>
+      <input type="text" id="email" placeholder="email" required>
       <input type="password" id="password" placeholder="Password" required>
       <button type="submit">Login</button>
     </form>
